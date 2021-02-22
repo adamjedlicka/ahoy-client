@@ -6,10 +6,12 @@ export const useApi = () => {
   const auth = useAuth()
 
   const get = async (route) => {
+    const token = auth.token
+
     const response = await fetch(BASE_URL + route, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${auth.token}`,
+        ...(token ?? { Authorization: `Bearer ${auth.token}` }),
       },
     })
 
@@ -35,5 +37,6 @@ export const useApi = () => {
 
   return {
     get,
+    post,
   }
 }

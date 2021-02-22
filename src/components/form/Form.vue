@@ -1,4 +1,5 @@
 <template>
+  <h1 v-if="title" class="mx-1 p-1 text-xl font-bold">{{ title }}</h1>
   <form class="flex flex-col" @submit.prevent="onSubmit">
     <slot />
   </form>
@@ -13,6 +14,10 @@ export const useForm = () => inject($Form)
 
 export default defineComponent({
   emits: ['submit'],
+
+  props: {
+    title: String,
+  },
 
   setup(props, { emit }) {
     const inputs = reactive({})
