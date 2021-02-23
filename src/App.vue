@@ -1,11 +1,7 @@
 <template>
-  <div class="flex flex-row">
+  <div class="p-2 w-screen h-screen flex flex-row">
     <SideBar />
-    <div class="container mx-auto">
-      <div class="flex flex-col">
-        <LoginForm v-if="!auth.isLoggedIn" />
-      </div>
-    </div>
+    <Chat />
   </div>
 </template>
 
@@ -13,12 +9,12 @@
 import { defineComponent } from 'vue'
 import { useAuth } from './compositions/Auth'
 import SideBar from './components/SideBar.vue'
-import LoginForm from './components/LoginForm.vue'
+import Chat from './components/Chat.vue'
 
 export default defineComponent({
   components: {
     SideBar,
-    LoginForm,
+    Chat,
   },
 
   setup() {
