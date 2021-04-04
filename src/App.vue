@@ -1,20 +1,20 @@
 <template>
   <div class="p-2 w-screen h-screen flex flex-row">
-    <SideBar />
-    <Chat />
+    <Chat v-if="!!auth.user" />
+    <LoginForm v-else />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
 import { useAuth } from './compositions/Auth'
-import SideBar from './components/SideBar.vue'
-import Chat from './components/Chat.vue'
+import Chat from './components/chat/Chat.vue'
+import LoginForm from './components/LoginForm.vue'
 
 export default defineComponent({
   components: {
-    SideBar,
     Chat,
+    LoginForm,
   },
 
   setup() {

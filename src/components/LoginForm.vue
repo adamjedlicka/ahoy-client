@@ -1,10 +1,13 @@
 <template>
-  <h1 class="mx-1 my-4 p-1 text-xl font-bold">Přihlášení</h1>
-  <Form @submit="onSubmit">
-    <Input name="email" label="Email" />
-    <Input name="password" label="Heslo" />
-    <button type="submit" class="m-1 p-1 bg-white shadow rounded">Login</button>
-  </Form>
+  <div class="w-full">
+    <div class="w-1/4 mx-auto">
+      <h1 class="mx-1 my-4 p-1 text-xl font-bold">Přihlášení</h1>
+      <Form @submit="onSubmit">
+        <Input name="name" label="Name" />
+        <button type="submit" class="m-1 p-1 bg-white shadow rounded">Login</button>
+      </Form>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -22,8 +25,10 @@ export default defineComponent({
   setup() {
     const auth = useAuth()
 
-    const onSubmit = async ({ email, password }) => {
-      await auth.login(email, password)
+    const onSubmit = async ({ name }) => {
+      console.log(name)
+
+      await auth.login(name)
     }
 
     return {
